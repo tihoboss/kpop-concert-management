@@ -8,7 +8,7 @@ on:
 
 jobs:
   test:
-    runs-on: ubuntu-latest  # Лучше работает с Selenium, чем Windows
+    runs-on: ubuntu-latest
 
     timeout-minutes: 15
 
@@ -18,20 +18,52 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '18'
+          node-version: '20'
           cache: 'npm'
 
       - name: Install dependencies
         run: npm ci
 
-      - name: Start server (background)
+      - name: Start ChromeDriver
+        run: |
+          echo "Starting ChromeDriver..."
+          npx chromedriver --port=9515 --url-base=/wd/hub &
+          # Даем время на запуск ChromeDriver
+          sleep 5
+          echo "✅ ChromeDriver started"
+        shell: bash
+
+      - name: Start server and wait for it to be ready
         run: |
           npm run start &
-          npx wait-on http://localhost:3000 --timeout 10000
+          # Ждем запуска сервера с правильным портом
+          echo "Waiting for server on port 5500..."
+          for i in {1..30}; do
+            if curl -s http://localhost:5500/api/test > /dev/null 2>&1; then
+              echo "✅ Server is ready!"
+              exit 0
+            fi
+            echo "⏳ Attempt $i/30..."
+            sleep 1
+          done
+          echo "❌ Server failed to start"
+          exit 1
+        shell: bash
+
+      - name: Debug - check running processes
+        run: |
+          echo "Checking running processes:"
+          ps aux | grep -E "(chromedriver|node)" | grep -v grep || echo "No processes found"
+          echo ""
+          echo "Checking ports:"
+          netstat -tulpn 2>/dev/null | grep -E "(9515|5500)" || echo "Ports not found"
         shell: bash
 
       - name: Run Selenium tests
         run: npm run test:selenium
+        env:
+          SELENIUM_REMOTE_URL: http://localhost:9515
+          CHROME_DRIVER_PORT: 9515
 
       - name: Run Cucumber tests
         run: npm run test:cucumber

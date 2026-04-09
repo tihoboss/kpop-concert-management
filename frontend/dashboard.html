@@ -1,0 +1,673 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Панель управления - K-POP Concert Manager</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="dashboard.css">
+</head>
+<body>
+    <div class="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <i class="fas fa-microphone-alt"></i>
+                    <span>K-POP Concert Manager</span>
+                </div>
+                <div class="user-info">
+                    <div class="user-avatar" id="userAvatar">U</div>
+                    <div>
+                        <div id="userName">Пользователь</div>
+                        <div id="userRole" style="font-size: 12px;">Роль</div>
+                    </div>
+                    <button class="logout-btn" id="logoutBtn">
+                        <i class="fas fa-sign-out-alt"></i> Выйти
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="main-container">
+        <div class="sidebar">
+            <div class="nav-item active" data-page="dashboard">
+                <i class="fas fa-home"></i> Главная
+            </div>
+            <div class="nav-item" data-page="events">
+                <i class="fas fa-calendar-alt"></i> Мероприятия
+            </div>
+            <div class="nav-item" data-page="groups">
+                <i class="fas fa-users"></i> Группы
+            </div>
+            <div class="nav-item" data-page="venues">
+                <i class="fas fa-map-marker-alt"></i> Площадки
+            </div>
+            <div class="nav-item" data-page="tech-teams">
+                <i class="fas fa-tools"></i> Технические команды
+            </div>
+            <div class="nav-item" data-page="profile">
+                <i class="fas fa-user"></i> Профиль
+            </div>
+        </div>
+        
+        <div class="content">
+            <div id="dashboardPage" class="page active">
+                <h1 class="page-title">Панель управления</h1>
+                
+                <div id="roleInfo" class="info-message" style="margin-bottom: 20px;"></div>
+                
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-calendar-check"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h3 id="totalEvents">0</h3>
+                            <p>Всего мероприятий</p>
+                        </div>
+                    </div>
+                    
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h3 id="upcomingEvents">0</h3>
+                            <p>Ближайшие мероприятия</p>
+                        </div>
+                    </div>
+                    
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h3 id="totalGroups">0</h3>
+                            <p>Группы</p>
+                        </div>
+                    </div>
+                    
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h3 id="totalVenues">0</h3>
+                            <p>Площадки</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div id="managerGroupsSection" style="display: none;">
+                    <div class="section-title">
+                        <h2>Мои группы</h2>
+                    </div>
+                    <div class="table-container">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Название группы</th>
+                                    <th>Количество участников</th>
+                                    <th>Активных мероприятий</th>
+                                    <th>Ближайшее мероприятие</th>
+                                </tr>
+                            </thead>
+                            <tbody id="managerGroupsTable"></tbody>
+                        </table>
+                    </div>
+                </div>
+                
+                <div class="section-title">
+                    <h2>Ближайшие мероприятия</h2>
+                    <button class="btn btn-primary" id="addEventBtn" style="display: none;">
+                        <i class="fas fa-plus"></i> Добавить мероприятие
+                    </button>
+                </div>
+                
+                <div id="eventsContainer">
+                    <div class="loading" id="loadingEvents">
+                        <i class="fas fa-spinner"></i>
+                        <p>Загрузка мероприятий...</p>
+                    </div>
+                    
+                    <div class="events-grid" id="eventsGrid" style="display: none;"></div>
+                    
+                    <div class="empty-state" id="noEvents" style="display: none;">
+                        <i class="fas fa-calendar-times"></i>
+                        <h3>Нет мероприятий</h3>
+                        <p>Мероприятия будут отображены здесь</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div id="eventsPage" class="page">
+                <div class="section-title">
+                    <h2>Все мероприятия</h2>
+                    <div>
+                        <button class="btn btn-secondary" id="filterToggleBtn" style="margin-right: 10px;">
+                            <i class="fas fa-filter"></i> Фильтры
+                        </button>
+                        <button class="btn btn-primary" id="addEventBtn2" style="display: none;">
+                            <i class="fas fa-plus"></i> Добавить мероприятие
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="filter-panel" id="filterPanel" style="display: none;">
+                    <div class="filter-row">
+                        <div class="filter-group">
+                            <label>Статус</label>
+                            <select class="filter-control" id="filterStatus">
+                                <option value="">Все статусы</option>
+                                <option value="planned">Запланировано</option>
+                                <option value="confirmed">Подтверждено</option>
+                                <option value="completed">Завершено</option>
+                                <option value="cancelled">Отменено</option>
+                            </select>
+                        </div>
+                        
+                        <div class="filter-group">
+                            <label>Тип мероприятия</label>
+                            <select class="filter-control" id="filterType">
+                                <option value="">Все типы</option>
+                                <option value="concert">Концерт</option>
+                                <option value="fanmeeting">Фан-встреча</option>
+                                <option value="showcase">Презентация</option>
+                                <option value="rehearsal">Репетиция</option>
+                                <option value="recording">Запись</option>
+                            </select>
+                        </div>
+                        
+                        <div class="filter-group">
+                            <label>Группа</label>
+                            <select class="filter-control" id="filterGroup">
+                                <option value="">Все группы</option>
+                            </select>
+                        </div>
+                        
+                        <div class="filter-group">
+                            <label>Площадка</label>
+                            <select class="filter-control" id="filterVenue">
+                                <option value="">Все площадки</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="filter-row">
+                        <div class="filter-group">
+                            <label>Дата с</label>
+                            <input type="date" class="filter-control" id="filterDateFrom">
+                        </div>
+                        
+                        <div class="filter-group">
+                            <label>Дата по</label>
+                            <input type="date" class="filter-control" id="filterDateTo">
+                        </div>
+                        
+                        <div class="filter-group">
+                            <label>Сортировка</label>
+                            <select class="filter-control" id="filterSort">
+                                <option value="start_date_desc">По дате (новые)</option>
+                                <option value="start_date_asc">По дате (старые)</option>
+                                <option value="name_asc">По названию (А-Я)</option>
+                                <option value="name_desc">По названию (Я-А)</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="filter-actions">
+                        <button class="btn btn-secondary" id="resetFiltersBtn">
+                            <i class="fas fa-redo"></i> Сбросить
+                        </button>
+                        <button class="btn btn-primary" id="applyFiltersBtn">
+                            <i class="fas fa-check"></i> Применить
+                        </button>
+                    </div>
+                </div>
+                
+                <div id="allEventsContainer">
+                    <div class="error-message" id="eventsError" style="display: none;"></div>
+                    <div class="success-message" id="eventsSuccess" style="display: none;"></div>
+                    
+                    <div class="loading" id="loadingAllEvents">
+                        <i class="fas fa-spinner"></i>
+                        <p>Загрузка мероприятий...</p>
+                    </div>
+                    
+                    <div class="table-container" id="eventsTableContainer" style="display: none;">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Название</th>
+                                    <th>Тип</th>
+                                    <th>Дата начала</th>
+                                    <th>Группа</th>
+                                    <th>Площадка</th>
+                                    <th>Статус</th>
+                                    <th>Действия</th>
+                                </tr>
+                            </thead>
+                            <tbody id="eventsTable"></tbody>
+                        </table>
+                    </div>
+                    
+                    <div class="empty-state" id="noAllEvents" style="display: none;">
+                        <i class="fas fa-calendar-times"></i>
+                        <h3>Нет мероприятий</h3>
+                        <p>Мероприятия будут отображены здесь</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div id="groupsPage" class="page">
+                <div class="section-title">
+                    <h2>K-POP Группы</h2>
+                    <div>
+                        <button class="btn btn-primary" id="addGroupBtn" style="display: none;">
+                            <i class="fas fa-plus"></i> Добавить группу
+                        </button>
+                    </div>
+                </div>
+                
+                <div id="managerOnlyGroups" class="info-message" style="display: none;">
+                    <i class="fas fa-info-circle"></i> Отображаются только группы, за которые вы ответственны
+                </div>
+                
+                <div id="groupsContainer">
+                    <div class="error-message" id="groupsError" style="display: none;"></div>
+                    <div class="success-message" id="groupsSuccess" style="display: none;"></div>
+                    
+                    <div class="loading" id="loadingGroups">
+                        <i class="fas fa-spinner"></i>
+                        <p>Загрузка групп...</p>
+                    </div>
+                    
+                    <div class="table-container" id="groupsTableContainer" style="display: none;">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Название</th>
+                                    <th>Компания</th>
+                                    <th>Менеджер</th>
+                                    <th>Количество участников</th>
+                                    <th>Год дебюта</th>
+                                    <th>Жанр</th>
+                                    <th>Статус</th>
+                                    <th>Мероприятий</th>
+                                </tr>
+                            </thead>
+                            <tbody id="groupsTable"></tbody>
+                        </table>
+                    </div>
+                    
+                    <div class="empty-state" id="noGroups" style="display: none;">
+                        <i class="fas fa-users-slash"></i>
+                        <h3>Нет групп</h3>
+                        <p>Группы будут отображены здесь</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div id="venuesPage" class="page">
+                <div class="section-title">
+                    <h2>Концертные площадки</h2>
+                </div>
+                
+                <div id="venuesContainer">
+                    <div class="error-message" id="venuesError" style="display: none;"></div>
+                    
+                    <div class="loading" id="loadingVenues">
+                        <i class="fas fa-spinner"></i>
+                        <p>Загрузка площадок...</p>
+                    </div>
+                    
+                    <div class="table-container" id="venuesTableContainer" style="display: none;">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Название</th>
+                                    <th>Город</th>
+                                    <th>Адрес</th>
+                                    <th>Вместимость</th>
+                                    <th>Тип</th>
+                                    <th>Контактное лицо</th>
+                                    <th>Телефон</th>
+                                </tr>
+                            </thead>
+                            <tbody id="venuesTable"></tbody>
+                        </table>
+                    </div>
+                    
+                    <div class="empty-state" id="noVenues" style="display: none;">
+                        <i class="fas fa-map-marker-slash"></i>
+                        <h3>Нет площадок</h3>
+                        <p>Площадки будут отображены здесь</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div id="techTeamsPage" class="page">
+                <div class="section-title">
+                    <h2>Технические команды и координаторы</h2>
+                </div>
+                
+                <div style="margin-bottom: 40px;">
+                    <h3 style="color: #8b4513; margin-bottom: 20px;">Технические команды</h3>
+                    <div id="techTeamsContainer">
+                        <div class="error-message" id="techTeamsError" style="display: none;"></div>
+                        
+                        <div class="loading" id="loadingTechTeams">
+                            <i class="fas fa-spinner"></i>
+                            <p>Загрузка технических команд...</p>
+                        </div>
+                        
+                        <div class="table-container" id="techTeamsTableContainer" style="display: none;">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>Название команды</th>
+                                        <th>Тип команды</th>
+                                        <th>Руководитель</th>
+                                        <th>Количество участников</th>
+                                        <th>Статус</th>
+                                        <th>Специализация</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="techTeamsTable"></tbody>
+                            </table>
+                        </div>
+                        
+                        <div class="empty-state" id="noTechTeams" style="display: none;">
+                            <i class="fas fa-tools"></i>
+                            <h3>Нет технических команд</h3>
+                            <p>Технические команды будут отображены здесь</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div id="managerCoordinatorsSection" style="display: none;">
+                    <h3 style="color: #8b4513; margin-bottom: 20px;">Координаторы</h3>
+                    <div class="info-message" style="margin-bottom: 20px;">
+                        <i class="fas fa-info-circle"></i> 
+                        Отображаются все координаторы. Отмечены те, которые работают с вашими группами.
+                    </div>
+                    
+                    <div id="coordinatorsContainer">
+                        <div class="error-message" id="coordinatorsError" style="display: none;"></div>
+                        
+                        <div class="loading" id="loadingCoordinators">
+                            <i class="fas fa-spinner"></i>
+                            <p>Загрузка координаторов...</p>
+                        </div>
+                        
+                        <div class="table-container" id="coordinatorsTableContainer" style="display: none;">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>Имя</th>
+                                        <th>Email</th>
+                                        <th>Телефон</th>
+                                        <th>Специализация</th>
+                                        <th>События с вашими группами</th>
+                                        <th>Все события</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="coordinatorsTable"></tbody>
+                            </table>
+                        </div>
+                        
+                        <div class="empty-state" id="noCoordinators" style="display: none;">
+                            <i class="fas fa-user-tie"></i>
+                            <h3>Нет координаторов</h3>
+                            <p>Координаторы будут отображены здесь</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div id="profilePage" class="page">
+                <div class="section-title">
+                    <h2>Профиль пользователя</h2>
+                </div>
+                
+                <div class="stat-card" style="max-width: 600px;">
+                    <div class="stat-icon" id="profileAvatar">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <div class="stat-info">
+                        <h3 id="profileName">Имя пользователя</h3>
+                        <p id="profileEmail">Email не указан</p>
+                        <div style="margin-top: 10px;">
+                            <span class="role-badge" id="profileRoleBadge">Роль</span>
+                        </div>
+                        <p id="profileId" style="font-size: 14px; color: #999; margin-top: 10px;">ID: <span id="userId"></span></p>
+                    </div>
+                </div>
+                
+                <div id="profileAdditionalInfo" style="margin-top: 30px;"></div>
+            </div>
+        </div>
+    </div>
+    
+    <div id="eventModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title" id="modalTitle">Новое мероприятие</h3>
+                <button class="close-btn" id="closeModalBtn">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="eventForm">
+                    <div class="form-group">
+                        <label class="form-label">Название мероприятия *</label>
+                        <input type="text" class="form-control" id="eventName" required>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label class="form-label">Тип мероприятия *</label>
+                            <select class="form-control" id="eventType" required>
+                                <option value="">Выберите тип</option>
+                                <option value="concert">Концерт</option>
+                                <option value="fanmeeting">Фан-встреча</option>
+                                <option value="showcase">Презентация</option>
+                                <option value="rehearsal">Репетиция</option>
+                                <option value="recording">Запись</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="form-label">Статус *</label>
+                            <select class="form-control" id="eventStatus" required>
+                                <option value="planned">Запланировано</option>
+                                <option value="confirmed">Подтверждено</option>
+                                <option value="completed">Завершено</option>
+                                <option value="cancelled">Отменено</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label class="form-label">Дата начала *</label>
+                            <input type="datetime-local" class="form-control" id="eventStartDate" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="form-label">Дата окончания *</label>
+                            <input type="datetime-local" class="form-control" id="eventEndDate" required>
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label class="form-label">Группа *</label>
+                            <select class="form-control" id="eventGroup" required>
+                                <option value="">Выберите группу</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="form-label">Площадка *</label>
+                            <select class="form-control" id="eventVenue" required>
+                                <option value="">Выберите площадку</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label">Описание</label>
+                        <textarea class="form-control" id="eventDescription" rows="4" placeholder="Дополнительная информация о мероприятии..."></textarea>
+                    </div>
+                    
+                    <div id="coordinatorTechTeamsSection" style="display: none; margin-top: 30px;">
+                        <h3 style="color: #8b4513; margin-bottom: 20px;">Управление техническими командами</h3>
+                        
+                        <div class="form-row">
+                            <div class="form-group" style="flex: 2;">
+                                <label class="form-label">Техническая команда</label>
+                                <select class="form-control" id="techTeamSelect">
+                                    <option value="">Выберите техническую команду</option>
+                                </select>
+                            </div>
+                            <div class="form-group" style="flex: 1;">
+                                <label class="form-label">Примечания</label>
+                                <input type="text" class="form-control" id="techTeamNotes" placeholder="Примечания...">
+                            </div>
+                            <div class="form-group" style="align-self: flex-end;">
+                                <button type="button" class="btn btn-primary" id="addTechTeamBtn" style="margin-bottom: 8px;">
+                                    <i class="fas fa-plus"></i> Добавить
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <div id="currentTechTeamsContainer" style="margin-top: 20px;">
+                            <h4 style="color: #666; margin-bottom: 10px;">Назначенные команды</h4>
+                            <div class="table-container">
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th>Команда</th>
+                                            <th>Тип</th>
+                                            <th>Специализация</th>
+                                            <th>Примечания</th>
+                                            <th>Действия</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="techTeamsTableBody">
+                                        <tr>
+                                            <td colspan="5" class="text-center" style="padding: 20px; color: #999;">
+                                                Нет назначенных технических команд
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="error-message" id="completionWarning" style="display: none;">
+                        <i class="fas fa-exclamation-triangle"></i> 
+                        Нельзя отметить как завершенное мероприятие, которое еще не состоялось
+                    </div>
+                    
+                    <div class="error-message" id="eventFormError" style="display: none;"></div>
+                    
+                    <div class="form-actions" style="display: flex; justify-content: flex-end; gap: 10px; margin-top: 30px;">
+                        <button type="button" class="btn" id="cancelEventBtn">Отмена</button>
+                        <button type="submit" class="btn btn-primary" id="saveEventBtn">Сохранить мероприятие</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div id="groupModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title" id="groupModalTitle">Новая группа</h3>
+                <button class="close-btn" id="closeGroupModalBtn">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="groupForm">
+                    <div class="form-group">
+                        <label class="form-label">Название группы *</label>
+                        <input type="text" class="form-control" id="groupName" required>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label class="form-label">Компания</label>
+                            <select class="form-control" id="groupCompany">
+                                <option value="">Выберите компанию</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="form-label">Менеджер</label>
+                            <select class="form-control" id="groupManager">
+                                <option value="">Выберите менеджера</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label class="form-label">Дата дебюта</label>
+                            <input type="date" class="form-control" id="groupDebutDate">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="form-label">Количество участников</label>
+                            <input type="number" class="form-control" id="groupMemberCount" min="1" max="50">
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label class="form-label">Жанр</label>
+                            <select class="form-control" id="groupGenre">
+                                <option value="">Выберите жанр</option>
+                                <option value="K-POP">K-POP</option>
+                                <option value="J-POP">J-POP</option>
+                                <option value="C-POP">C-POP</option>
+                                <option value="Pop">Pop</option>
+                                <option value="Rock">Rock</option>
+                                <option value="Hip-Hop">Hip-Hop</option>
+                                <option value="R&B">R&B</option>
+                                <option value="Electronic">Electronic</option>
+                                <option value="Ballad">Ballad</option>
+                                <option value="Dance">Dance</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="form-label">Статус</label>
+                            <select class="form-control" id="groupStatus">
+                                <option value="active">Активна</option>
+                                <option value="inactive">Неактивна</option>
+                                <option value="disbanded">Расформирована</option>
+                                <option value="hiatus">Перерыв</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label">Описание</label>
+                        <textarea class="form-control" id="groupDescription" rows="3" placeholder="Информация о группе..."></textarea>
+                    </div>
+                    
+                    <div class="error-message" id="groupFormError" style="display: none;"></div>
+                    
+                    <div class="form-actions" style="display: flex; justify-content: flex-end; gap: 10px; margin-top: 30px;">
+                        <button type="button" class="btn" id="cancelGroupBtn">Отмена</button>
+                        <button type="submit" class="btn btn-primary" id="saveGroupBtn">Сохранить группу</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    
+    <script src="dashboard.js"></script>
+</body>
+</html>

@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MealBox — полезные ланчи по подписке</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Дополнительный внутренний стиль для плавности (необязательно) -->
+    <style> html { scroll-behavior: smooth; } </style>
+</head>
+<body class="bg-white text-gray-800 font-sans antialiased">
+
+    <!-- Header: логотип + меню + кнопка "Оформить" (якорь на форму) -->
+    <header class="border-b border-gray-100 bg-white/80 backdrop-blur-sm sticky top-0 z-10">
+        <div class="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between flex-wrap">
+            <!-- Логотип MealBox (простой текст + иконка) -->
+            <a href="#" class="text-2xl font-bold flex items-center gap-2 text-emerald-700">
+                <span class="text-3xl">🍱</span> MealBox
+            </a>
+            <!-- Навигация (десктоп) -->
+            <nav class="hidden md:flex items-center gap-8 text-gray-600 font-medium">
+                <a href="#how" class="hover:text-emerald-600 transition">Как работает</a>
+                <a href="#pricing" class="hover:text-emerald-600 transition">Тарифы</a>
+            </nav>
+            <!-- Кнопка "Оформить" ведёт к форме -->
+            <a href="#apply" class="bg-emerald-600 hover:bg-emerald-700 text-white px-5 py-2 rounded-full text-sm font-semibold shadow-md transition shadow-emerald-200">
+                Оформить ➔
+            </a>
+        </div>
+    </header>
+
+    <main class="max-w-6xl mx-auto px-6">
+
+        <!-- Hero секция: заголовок + подзаголовок + кнопки-якоря + SVG справа (без внешних картинок) -->
+        <section class="py-12 md:py-20 flex flex-col-reverse md:flex-row items-center gap-10">
+            <div class="flex-1 text-center md:text-left">
+                <h1 class="text-4xl md:text-5xl font-extrabold leading-tight text-gray-900">
+                    Полезные ланчи <br> без готовки и забот
+                </h1>
+                <p class="mt-4 text-lg text-gray-600 max-w-lg">
+                    Подписка на сбалансированные обеды с доставкой к офису или дому. Выбирайте свой тариф и забудьте о меню на неделю.
+                </p>
+                <div class="mt-8 flex flex-wrap gap-4 justify-center md:justify-start">
+                    <a href="#apply" class="bg-emerald-600 hover:bg-emerald-700 text-white px-7 py-3 rounded-full text-base font-semibold shadow-lg shadow-emerald-200 transition">Оформить подписку</a>
+                    <a href="#pricing" class="border-2 border-emerald-600 text-emerald-700 hover:bg-emerald-50 px-7 py-3 rounded-full text-base font-semibold transition">Выбрать тариф</a>
+                </div>
+            </div>
+            <!-- SVG-иллюстрация (ланч-бокс + лист салата + приборы, тёплые градиенты) -->
+            <div class="flex-1 flex justify-center">
+                <svg width="320" height="300" viewBox="0 0 320 300" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-full max-w-sm">
+                    <!-- фоновая тарелка / подложка (тёплый градиент) -->
+                    <circle cx="160" cy="150" r="110" fill="url(#paint0_radial)" opacity="0.6"/>
+                    <!-- ланч-бокс (основная коробка) -->
+                    <rect x="100" y="100" width="140" height="100" rx="20" fill="url(#paint1_linear)" stroke="#d97706" stroke-width="2"/>
+                    <!-- крышка ланч-бокса -->
+                    <rect x="90" y="80" width="160" height="25" rx="12" fill="url(#paint2_linear)" stroke="#b45309" stroke-width="2"/>
+                    <!-- разделители внутри (ячейки) -->
+                    <line x1="135" y1="105" x2="135" y2="195" stroke="#e2e8f0" stroke-width="3" stroke-dasharray="6 6"/>
+                    <line x1="185" y1="105" x2="185" y2="195" stroke="#e2e8f0" stroke-width="3" stroke-dasharray="6 6"/>
+                    <line x1="105" y1="140" x2="225" y2="140" stroke="#e2e8f0" stroke-width="3" stroke-dasharray="6 6"/>
+                    <!-- столовые приборы (вилка + ложка) -->
+                    <path d="M230 130 L250 110 L260 120 L240 140 L230 130" fill="#cbd5e1" opacity="0.9"/>
+                    <path d="M230 150 L260 180 L250 190 L220 160 L230 150" fill="#cbd5e1" opacity="0.9"/>
+                    <!-- лист салата (декоративный, зелёный) -->
+                    <path d="M70 140 Q50 100 90 90 Q100 70 130 90 Q150 70 160 100 Q190 90 200 130 Q170 150 140 140 Q120 160 90 150 Q80 160 70 140" fill="url(#paint3_green)" opacity="0.9" transform="rotate(-10 120 120)"/>
+                    <!-- дополнительный листик около бокса -->
+                    <path d="M260 180 Q275 160 290 180 Q300 200 280 210 Q270 220 260 200 Q250 190 260 180" fill="url(#paint4_green)" opacity="0.8"/>
+                    <!-- тёплые блики / точки -->
+                    <circle cx="150" cy="150" r="8" fill="#fde68a" opacity="0.6"/>
+                    <circle cx="200" cy="120" r="6" fill="#fbbf24" opacity="0.5"/>
+                    <!-- градиенты -->
+                    <defs>
+                        <radialGradient id="paint0_radial" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(160 150) rotate(90) scale(110)">
+                            <stop stop-color="#fef3c7"/>
+                            <stop offset="1" stop-color="#fde68a" stop-opacity="0.3"/>
+                        </radialGradient>
+                        <linearGradient id="paint1_linear" x1="100" y1="100" x2="240" y2="200" gradientUnits="userSpaceOnUse">
+                            <stop stop-color="#fcd34d"/>
+                            <stop offset="1" stop-color="#fbbf24"/>
+                        </linearGradient>
+                        <linearGradient id="paint2_linear" x1="90" y1="80" x2="250" y2="105" gradientUnits="userSpaceOnUse">
+                            <stop stop-color="#f59e0b"/>
+                            <stop offset="1" stop-color="#d97706"/>
+                        </linearGradient>
+                        <linearGradient id="paint3_green" x1="70" y1="90" x2="200" y2="160" gradientUnits="userSpaceOnUse">
+                            <stop stop-color="#4ade80"/>
+                            <stop offset="1" stop-color="#22c55e"/>
+                        </linearGradient>
+                        <linearGradient id="paint4_green" x1="250" y1="170" x2="300" y2="210" gradientUnits="userSpaceOnUse">
+                            <stop stop-color="#86efac"/>
+                            <stop offset="1" stop-color="#4ade80"/>
+                        </linearGradient>
+                    </defs>
+                </svg>
+            </div>
+        </section>
+
+        <!-- Как работает: 3 шага -->
+        <section id="how" class="py-16 scroll-mt-20">
+            <h2 class="text-3xl md:text-4xl font-bold text-center text-gray-900">Как это работает</h2>
+            <div class="mt-12 grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="text-center p-6 rounded-2xl bg-orange-50/50">
+                    <div class="text-5xl mb-3">📋</div>
+                    <h3 class="text-xl font-semibold">Выбери тариф</h3>
+                    <p class="mt-2 text-gray-600">Start, Plus или Pro — сбалансируй питание под свой график.</p>
+                </div>
+                <div class="text-center p-6 rounded-2xl bg-emerald-50/50">
+                    <div class="text-5xl mb-3">⏰</div>
+                    <h3 class="text-xl font-semibold">Назначь время</h3>
+                    <p class="mt-2 text-gray-600">Доставляем в удобный часовой слот, без опозданий.</p>
+                </div>
+                <div class="text-center p-6 rounded-2xl bg-amber-50/50">
+                    <div class="text-5xl mb-3">🍱</div>
+                    <h3 class="text-xl font-semibold">Получай и ешь</h3>
+                    <p class="mt-2 text-gray-600">Готовые ланчи прямо к двери. Никакой готовки!</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Тарифы: Start / Plus / Pro -->
+        <section id="pricing" class="py-16 scroll-mt-20 border-t border-gray-100">
+            <h2 class="text-3xl md:text-4xl font-bold text-center text-gray-900">Тарифы</h2>
+            <div class="mt-12 grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Start -->
+                <div class="border rounded-3xl p-6 shadow-sm hover:shadow-md transition bg-white">
+                    <h3 class="text-2xl font-bold text-gray-800">Start</h3>
+                    <p class="text-3xl font-extrabold mt-3">990 ₽ <span class="text-base font-normal text-gray-500">/ нед.</span></p>
+                    <ul class="mt-5 space-y-3 text-gray-600">
+                        <li class="flex items-center gap-2">✅ 5 обедов (пн–пт)</li>
+                        <li class="flex items-center gap-2">✅ Суп + салат</li>
+                        <li class="flex items-center gap-2">✅ Напиток (чай/кофе)</li>
+                        <li class="flex items-center gap-2">❌ Десерт</li>
+                    </ul>
+                    <a href="#apply" class="block text-center mt-8 border border-emerald-600 text-emerald-700 hover:bg-emerald-50 py-3 rounded-full font-semibold">Выбрать</a>
+                </div>
+                <!-- Plus (рекомендуемый) -->
+                <div class="border-2 border-emerald-600 rounded-3xl p-6 shadow-md bg-white relative">
+                    <span class="absolute -top-4 left-1/2 -translate-x-1/2 bg-emerald-600 text-white px-4 py-1 rounded-full text-sm font-semibold">🔥 популярное</span>
+                    <h3 class="text-2xl font-bold text-gray-800 mt-2">Plus</h3>
+                    <p class="text-3xl font-extrabold mt-3">1 790 ₽ <span class="text-base font-normal text-gray-500">/ нед.</span></p>
+                    <ul class="mt-5 space-y-3 text-gray-600">
+                        <li class="flex items-center gap-2">✅ 7 обедов (пн–вс)</li>
+                        <li class="flex items-center gap-2">✅ Суп + салат + горячее</li>
+                        <li class="flex items-center gap-2">✅ Напиток + десерт</li>
+                        <li class="flex items-center gap-2">✅ Замена блюда</li>
+                    </ul>
+                    <a href="#apply" class="block text-center mt-8 bg-emerald-600 text-white hover:bg-emerald-700 py-3 rounded-full font-semibold shadow">Выбрать</a>
+                </div>
+                <!-- Pro -->
+                <div class="border rounded-3xl p-6 shadow-sm hover:shadow-md transition bg-white">
+                    <h3 class="text-2xl font-bold text-gray-800">Pro</h3>
+                    <p class="text-3xl font-extrabold mt-3">2 490 ₽ <span class="text-base font-normal text-gray-500">/ нед.</span></p>
+                    <ul class="mt-5 space-y-3 text-gray-600">
+                        <li class="flex items-center gap-2">✅ 7 обедов + завтрак</li>
+                        <li class="flex items-center gap-2">✅ Full menu (все позиции)</li>
+                        <li class="flex items-center gap-2">✅ Смузи/бокс полезностей</li>
+                        <li class="flex items-center gap-2">✅ Приоритетная доставка</li>
+                    </ul>
+                    <a href="#apply" class="block text-center mt-8 border border-emerald-600 text-emerald-700 hover:bg-emerald-50 py-3 rounded-full font-semibold">Выбрать</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Оформление заявки (форма) #apply -->
+        <section id="apply" class="py-16 scroll-mt-20 border-t border-gray-100">
+            <div class="max-w-2xl mx-auto bg-gradient-to-br from-orange-50 to-emerald-50 p-8 rounded-3xl">
+                <h2 class="text-3xl font-bold text-gray-800 text-center">Оформить доставку</h2>
+                <p class="text-center text-gray-600 mt-2">Заполните форму — мы свяжемся для уточнения деталей</p>
+                <!-- сама форма с полями -->
+                <form id="deliveryForm" class="mt-8 space-y-5">
+                    <div>
+                        <label for="name" class="block text-sm font-medium text-gray-700 mb-1">Имя <span class="text-red-500">*</span></label>
+                        <input type="text" id="name" name="name" placeholder="Анна" required
+                               class="w-full px-5 py-3 border border-gray-200 rounded-2xl focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 outline-none">
+                    </div>
+                    <div>
+                        <label for="phone" class="block text-sm font-medium text-gray-700 mb-1">Телефон <span class="text-red-500">*</span></label>
+                        <input type="tel" id="phone" name="phone" placeholder="+7 (___) ___-__-__" required
+                               class="w-full px-5 py-3 border border-gray-200 rounded-2xl focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 outline-none">
+                    </div>
+                    <div>
+                        <label for="tariff" class="block text-sm font-medium text-gray-700 mb-1">Тариф <span class="text-red-500">*</span></label>
+                        <select id="tariff" name="tariff" required
+                                class="w-full px-5 py-3 border border-gray-200 rounded-2xl focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 outline-none bg-white">
+                            <option value="" disabled selected>— выберите тариф —</option>
+                            <option value="Start">Start (990₽/нед)</option>
+                            <option value="Plus">Plus (1790₽/нед)</option>
+                            <option value="Pro">Pro (2490₽/нед)</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label for="comment" class="block text-sm font-medium text-gray-700 mb-1">Комментарий (необязательно)</label>
+                        <textarea id="comment" name="comment" rows="2" placeholder="Пожелания по времени / составу"
+                                  class="w-full px-5 py-3 border border-gray-200 rounded-2xl focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 outline-none"></textarea>
+                    </div>
+                    <!-- дисклеймер под формой -->
+                    <p class="text-xs text-gray-500 italic">Нажимая кнопку, вы соглашаетесь с обработкой данных.</p>
+                    <button type="submit" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-semibold py-4 px-6 rounded-2xl text-lg shadow-md transition">
+                        Оформить доставку
+                    </button>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer: копирайт + 2 ссылки -->
+    <footer class="border-t border-gray-200 mt-12 py-8 bg-gray-50">
+        <div class="max-w-6xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-3 text-gray-500 text-sm">
+            <div>© 2025 MealBox. Все права защищены.</div>
+            <div class="flex gap-6">
+                <a href="#" class="hover:text-emerald-700 transition">Политика конфиденциальности</a>
+                <a href="#" class="hover:text-emerald-700 transition">Пользовательское соглашение</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript только для формы заявки (без лишнего) -->
+    <script>
+        (function() {
+            const form = document.getElementById('deliveryForm');
+            if (!form) return;
+
+            form.addEventListener('submit', function(event) {
+                event.preventDefault(); // не даём форме отправиться по-настоящему
+
+                // Получаем значения полей
+                const name = document.getElementById('name').value.trim();
+                const phone = document.getElementById('phone').value.trim();
+                const tariff = document.getElementById('tariff').value; // select
+
+                // Проверка обязательных полей (имя, телефон, тариф)
+                if (name === '' || phone === '' || !tariff) {  // tariff будет пустой строкой, если не выбран (или disabled selected)
+                    alert('Заполните имя, телефон и выберите тариф.');
+                } else {
+                    alert('Заказ принят! Мы уточним детали доставки в течение дня.');
+                    // опционально можно сбросить форму, но по заданию просто алерт
+                    // form.reset(); // можно добавить если нужно, но необязательно
+                }
+            });
+        })();
+    </script>
+    <!-- Убедимся, что поле тарифа корректно проверяется: если валидация не сработает, select пустой строки не пройдёт -->
+</body>
+</html>

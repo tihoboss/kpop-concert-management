@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Вход в систему - K-POP Concert Manager</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="login.css">
+</head>
+<body>
+    <div class="header">
+        <div class="container">
+            <div class="logo">
+                <i class="fas fa-microphone-alt"></i>
+                <span>K-POP Concert Manager</span>
+            </div>
+            <a href="index.html" class="back-button">
+                <i class="fas fa-arrow-left"></i> На главную
+            </a>
+        </div>
+    </div>
+    
+    <div class="login-container">
+        <div class="login-box">
+            <h1>K-POP Concert Manager</h1>
+            
+            <div class="tab-container">
+                <div class="tab active" onclick="window.loginApp.switchTab('login')">
+                    <i class="fas fa-sign-in-alt"></i> Вход
+                </div>
+                <div class="tab" onclick="window.loginApp.switchTab('register')">
+                    <i class="fas fa-user-plus"></i> Регистрация компании
+                </div>
+            </div>
+            
+            <div id="loginTab" class="tab-content active">
+                <p>Выберите роль и войдите в систему</p>
+                
+                <div class="role-selector">
+                    <button type="button" class="role-btn" onclick="window.loginApp.selectRole('manager')">
+                        <i class="fas fa-user-tie"></i> Менеджер
+                    </button>
+                    <button type="button" class="role-btn" onclick="window.loginApp.selectRole('admin')">
+                        <i class="fas fa-crown"></i> Администратор
+                    </button>
+                    <button type="button" class="role-btn" onclick="window.loginApp.selectRole('coordinator')">
+                        <i class="fas fa-clipboard-list"></i> Координатор
+                    </button>
+                </div>
+                
+                <form id="loginForm">
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" placeholder="Введите email" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="password">Пароль</label>
+                        <input type="password" id="password" placeholder="Введите пароль" required>
+                    </div>
+                    
+                    <input type="hidden" id="role" value="manager">
+                    
+                    <button type="submit" class="login-btn" id="loginBtn">
+                        <i class="fas fa-sign-in-alt"></i> Войти
+                    </button>
+                </form>
+            </div>
+            
+            <div id="registerTab" class="tab-content">
+                <div class="info-text">
+                    <i class="fas fa-info-circle"></i> 
+                    Регистрация доступна только для администраторов компаний. 
+                    После регистрации вы сможете управлять своей компанией и создавать группы.
+                </div>
+                
+                <form id="registerForm">
+                    <div class="form-group">
+                        <label for="companyName">Название компании <span style="color: #ff0000;">*</span></label>
+                        <input type="text" id="companyName" placeholder="Например: JYP Entertainment" required>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="adminFullName">Ваше ФИО <span style="color: #ff0000;">*</span></label>
+                            <input type="text" id="adminFullName" placeholder="Иванов Иван Иванович" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="adminEmail">Email <span style="color: #ff0000;">*</span></label>
+                            <input type="email" id="adminEmail" placeholder="admin@company.com" required>
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="adminPassword">Пароль <span style="color: #ff0000;">*</span></label>
+                            <input type="password" id="adminPassword" placeholder="Минимум 6 символов" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="adminConfirmPassword">Подтверждение пароля <span style="color: #ff0000;">*</span></label>
+                            <input type="password" id="adminConfirmPassword" placeholder="Повторите пароль" required>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="adminPhone">Телефон</label>
+                        <input type="tel" id="adminPhone" placeholder="+7 (999) 123-45-67">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="companyFounded">Год основания компании</label>
+                        <input type="number" id="companyFounded" placeholder="Например: 2010" min="1900" max="2024">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="companyWebsite">Веб-сайт компании (необязательно)</label>
+                        <input type="url" id="companyWebsite" placeholder="https://www.jype.com">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="companyAddress">Адрес компании</label>
+                        <textarea id="companyAddress" placeholder="Юридический адрес компании"></textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="companyDescription">Описание компании</label>
+                        <textarea id="companyDescription" placeholder="Краткое описание деятельности компании..."></textarea>
+                    </div>
+                    
+                    <button type="submit" class="register-btn" id="registerBtn">
+                        <i class="fas fa-user-plus"></i> Зарегистрировать компанию
+                    </button>
+                </form>
+            </div>
+            
+            <div class="error-message" id="errorMessage"></div>
+            <div class="success-message" id="successMessage"></div>
+        </div>
+    </div>
+    
+    <footer>
+        <div class="container">
+            <p>Система управления K-POP концертами &copy; 2024</p>
+        </div>
+    </footer>
+    
+    <script src="login.js"></script>
+</body>
+</html>

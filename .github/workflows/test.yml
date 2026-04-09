@@ -1,0 +1,46 @@
+name: Run Tests
+
+on:
+  push:
+    branches: [ main, master, develop ]
+  pull_request:
+    branches: [ main, master ]
+
+jobs:
+  test:
+    runs-on: windows-latest  # или ubuntu-latest, macos-latest
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Start server
+        run: |
+          npm start &
+          sleep 5
+        shell: bash
+
+      - name: Run Jest tests
+        run: npm test
+
+      - name: Run Selenium tests
+        run: npm run test:selenium
+
+      - name: Run Cucumber tests
+        run: npm run test:cucumber
+
+      - name: Upload test reports
+        if: always()
+        uses: actions/upload-artifact@v3
+        with:
+          name: test-reports
+          path: |
+            reports/
+            test-results/

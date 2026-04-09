@@ -1,0 +1,1441 @@
+[
+  {
+    "description": "  Как администратор или менеджер\n  Я хочу управлять мероприятиями\n  Чтобы эффективно планировать концерты K-POP групп",
+    "elements": [
+      {
+        "description": "",
+        "id": "управление-мероприятиями;создание-нового-мероприятия",
+        "keyword": "Scenario",
+        "line": 12,
+        "name": "Создание нового мероприятия",
+        "steps": [
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 760611700
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 8,
+            "name": "я авторизован как администратор",
+            "result": {
+              "status": "undefined",
+              "duration": 0
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 9,
+            "name": "я нахожусь на странице мероприятий",
+            "match": {
+              "location": "tests\\step_definitions\\steps.js:90"
+            },
+            "result": {
+              "status": "skipped",
+              "duration": 0
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 13,
+            "name": "я нажимаю кнопку \"Добавить мероприятие\"",
+            "match": {
+              "location": "tests\\step_definitions\\steps.js:129"
+            },
+            "result": {
+              "status": "skipped",
+              "duration": 0
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 14,
+            "name": "я заполняю поле \"Название\" значением \"Тестовый концерт\"",
+            "match": {
+              "location": "tests\\step_definitions\\steps.js:183"
+            },
+            "result": {
+              "status": "skipped",
+              "duration": 0
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 15,
+            "name": "я выбираю тип \"Концерт\"",
+            "match": {
+              "location": "tests\\step_definitions\\steps.js:193"
+            },
+            "result": {
+              "status": "skipped",
+              "duration": 0
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 16,
+            "name": "я выбираю группу \"Stray Kids\"",
+            "match": {
+              "location": "tests\\step_definitions\\steps.js:205"
+            },
+            "result": {
+              "status": "skipped",
+              "duration": 0
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 17,
+            "name": "я выбираю площадку \"Olympic Gymnastics Arena\"",
+            "match": {
+              "location": "tests\\step_definitions\\steps.js:216"
+            },
+            "result": {
+              "status": "skipped",
+              "duration": 0
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 18,
+            "name": "я устанавливаю дату начала \"2025-12-15T19:00\"",
+            "match": {
+              "location": "tests\\step_definitions\\steps.js:227"
+            },
+            "result": {
+              "status": "skipped",
+              "duration": 0
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 19,
+            "name": "я устанавливаю дату окончания \"2025-12-15T22:00\"",
+            "match": {
+              "location": "tests\\step_definitions\\steps.js:235"
+            },
+            "result": {
+              "status": "skipped",
+              "duration": 0
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 20,
+            "name": "я нажимаю \"Сохранить\"",
+            "match": {
+              "location": "tests\\step_definitions\\steps.js:179"
+            },
+            "result": {
+              "status": "skipped",
+              "duration": 0
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 21,
+            "name": "новое мероприятие должно появиться в списке",
+            "match": {
+              "location": "tests\\step_definitions\\steps.js:323"
+            },
+            "result": {
+              "status": "skipped",
+              "duration": 0
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 45914300
+            }
+          }
+        ],
+        "tags": [
+          {
+            "name": "@positive",
+            "line": 11
+          }
+        ],
+        "type": "scenario"
+      },
+      {
+        "description": "",
+        "id": "управление-мероприятиями;редактирование-мероприятия",
+        "keyword": "Scenario",
+        "line": 24,
+        "name": "Редактирование мероприятия",
+        "steps": [
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 702582099
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 8,
+            "name": "я авторизован как администратор",
+            "result": {
+              "status": "undefined",
+              "duration": 0
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 9,
+            "name": "я нахожусь на странице мероприятий",
+            "match": {
+              "location": "tests\\step_definitions\\steps.js:90"
+            },
+            "result": {
+              "status": "skipped",
+              "duration": 0
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 25,
+            "name": "существует мероприятие \"Stray Kids World Tour - Seoul\"",
+            "match": {
+              "location": "tests\\step_definitions\\steps.js:99"
+            },
+            "result": {
+              "status": "skipped",
+              "duration": 0
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 26,
+            "name": "я нажимаю \"Редактировать\" у этого мероприятия",
+            "match": {
+              "location": "tests\\step_definitions\\steps.js:243"
+            },
+            "result": {
+              "status": "skipped",
+              "duration": 0
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 27,
+            "name": "я изменяю название на \"Stray Kids World Tour - Seoul (Updated)\"",
+            "match": {
+              "location": "tests\\step_definitions\\steps.js:253"
+            },
+            "result": {
+              "status": "skipped",
+              "duration": 0
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 28,
+            "name": "я нажимаю \"Сохранить\"",
+            "match": {
+              "location": "tests\\step_definitions\\steps.js:179"
+            },
+            "result": {
+              "status": "skipped",
+              "duration": 0
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 29,
+            "name": "мероприятие должно отображаться с новым названием",
+            "match": {
+              "location": "tests\\step_definitions\\steps.js:331"
+            },
+            "result": {
+              "status": "skipped",
+              "duration": 0
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 40436399
+            }
+          }
+        ],
+        "tags": [
+          {
+            "name": "@positive",
+            "line": 23
+          }
+        ],
+        "type": "scenario"
+      },
+      {
+        "description": "",
+        "id": "управление-мероприятиями;попытка-создать-мероприятие-без-обязательных-полей",
+        "keyword": "Scenario",
+        "line": 32,
+        "name": "Попытка создать мероприятие без обязательных полей",
+        "steps": [
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 608079199
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 8,
+            "name": "я авторизован как администратор",
+            "result": {
+              "status": "undefined",
+              "duration": 0
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 9,
+            "name": "я нахожусь на странице мероприятий",
+            "match": {
+              "location": "tests\\step_definitions\\steps.js:90"
+            },
+            "result": {
+              "status": "skipped",
+              "duration": 0
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 33,
+            "name": "я нажимаю кнопку \"Добавить мероприятие\"",
+            "match": {
+              "location": "tests\\step_definitions\\steps.js:129"
+            },
+            "result": {
+              "status": "skipped",
+              "duration": 0
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 34,
+            "name": "я оставляю поле \"Название\" пустым",
+            "match": {
+              "location": "tests\\step_definitions\\steps.js:261"
+            },
+            "result": {
+              "status": "skipped",
+              "duration": 0
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 35,
+            "name": "я нажимаю \"Сохранить\"",
+            "match": {
+              "location": "tests\\step_definitions\\steps.js:179"
+            },
+            "result": {
+              "status": "skipped",
+              "duration": 0
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 36,
+            "name": "должно отобразиться сообщение о необходимости заполнить обязательные поля",
+            "match": {
+              "location": "tests\\step_definitions\\steps.js:339"
+            },
+            "result": {
+              "status": "skipped",
+              "duration": 0
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 60087399
+            }
+          }
+        ],
+        "tags": [
+          {
+            "name": "@negative",
+            "line": 31
+          }
+        ],
+        "type": "scenario"
+      },
+      {
+        "description": "",
+        "id": "управление-мероприятиями;фильтрация-мероприятий-по-статусу",
+        "keyword": "Scenario",
+        "line": 39,
+        "name": "Фильтрация мероприятий по статусу",
+        "steps": [
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 595150700
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 8,
+            "name": "я авторизован как администратор",
+            "result": {
+              "status": "undefined",
+              "duration": 0
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 9,
+            "name": "я нахожусь на странице мероприятий",
+            "match": {
+              "location": "tests\\step_definitions\\steps.js:90"
+            },
+            "result": {
+              "status": "skipped",
+              "duration": 0
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 40,
+            "name": "я открываю панель фильтров",
+            "match": {
+              "location": "tests\\step_definitions\\steps.js:268"
+            },
+            "result": {
+              "status": "skipped",
+              "duration": 0
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 41,
+            "name": "я выбираю статус \"Подтверждено\"",
+            "match": {
+              "location": "tests\\step_definitions\\steps.js:276"
+            },
+            "result": {
+              "status": "skipped",
+              "duration": 0
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 42,
+            "name": "я нажимаю \"Применить\"",
+            "match": {
+              "location": "tests\\step_definitions\\steps.js:179"
+            },
+            "result": {
+              "status": "skipped",
+              "duration": 0
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 43,
+            "name": "отображаются только мероприятия со статусом \"Подтверждено\"",
+            "match": {
+              "location": "tests\\step_definitions\\steps.js:346"
+            },
+            "result": {
+              "status": "skipped",
+              "duration": 0
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 54545699
+            }
+          }
+        ],
+        "tags": [
+          {
+            "name": "@positive",
+            "line": 38
+          }
+        ],
+        "type": "scenario"
+      }
+    ],
+    "id": "управление-мероприятиями",
+    "line": 2,
+    "keyword": "Feature",
+    "name": "Управление мероприятиями",
+    "tags": [],
+    "uri": "tests\\features\\events.feature"
+  },
+  {
+    "description": "  Как пользователь системы\n  Я хочу войти в свой аккаунт\n  Чтобы получить доступ к функциям в соответствии с моей ролью",
+    "elements": [
+      {
+        "description": "",
+        "id": "авторизация-пользователей;успешная-авторизация-с-корректными-данными",
+        "keyword": "Scenario Outline",
+        "line": 20,
+        "name": "Успешная авторизация с корректными данными",
+        "steps": [
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 592275899
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 7,
+            "name": "я нахожусь на странице входа",
+            "match": {
+              "location": "tests\\step_definitions\\steps.js:52"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 2541027200
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 11,
+            "name": "я выбираю роль \"manager\"",
+            "match": {
+              "location": "tests\\step_definitions\\steps.js:106"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 543651100
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 12,
+            "name": "я ввожу email \"manager@jype.com\"",
+            "match": {
+              "location": "tests\\step_definitions\\steps.js:115"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 163480900
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 13,
+            "name": "я ввожу пароль \"demo123\"",
+            "match": {
+              "location": "tests\\step_definitions\\steps.js:122"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 92990499
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 14,
+            "name": "я нажимаю кнопку \"Войти\"",
+            "match": {
+              "location": "tests\\step_definitions\\steps.js:129"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1065938500
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 15,
+            "name": "я должен быть перенаправлен на дашборд",
+            "match": {
+              "location": "tests\\step_definitions\\steps.js:297"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 7386900
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 16,
+            "name": "должна отображаться роль \"Менеджер\"",
+            "match": {
+              "location": "tests\\step_definitions\\steps.js:303"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 32849399
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 66398699
+            }
+          }
+        ],
+        "tags": [
+          {
+            "name": "@positive",
+            "line": 9
+          }
+        ],
+        "type": "scenario"
+      },
+      {
+        "description": "",
+        "id": "авторизация-пользователей;успешная-авторизация-с-корректными-данными",
+        "keyword": "Scenario Outline",
+        "line": 21,
+        "name": "Успешная авторизация с корректными данными",
+        "steps": [
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 567218999
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 7,
+            "name": "я нахожусь на странице входа",
+            "match": {
+              "location": "tests\\step_definitions\\steps.js:52"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 2686960299
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 11,
+            "name": "я выбираю роль \"admin\"",
+            "match": {
+              "location": "tests\\step_definitions\\steps.js:106"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 473999
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 12,
+            "name": "я ввожу email \"admin@jype.com\"",
+            "match": {
+              "location": "tests\\step_definitions\\steps.js:115"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 128565399
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 13,
+            "name": "я ввожу пароль \"demo123\"",
+            "match": {
+              "location": "tests\\step_definitions\\steps.js:122"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 89324799
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 14,
+            "name": "я нажимаю кнопку \"Войти\"",
+            "match": {
+              "location": "tests\\step_definitions\\steps.js:129"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1059269400
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 15,
+            "name": "я должен быть перенаправлен на дашборд",
+            "match": {
+              "location": "tests\\step_definitions\\steps.js:297"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 6520199
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 16,
+            "name": "должна отображаться роль \"Администратор\"",
+            "match": {
+              "location": "tests\\step_definitions\\steps.js:303"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 31115199
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 58738600
+            }
+          }
+        ],
+        "tags": [
+          {
+            "name": "@positive",
+            "line": 9
+          }
+        ],
+        "type": "scenario"
+      },
+      {
+        "description": "",
+        "id": "авторизация-пользователей;успешная-авторизация-с-корректными-данными",
+        "keyword": "Scenario Outline",
+        "line": 22,
+        "name": "Успешная авторизация с корректными данными",
+        "steps": [
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 591126299
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 7,
+            "name": "я нахожусь на странице входа",
+            "match": {
+              "location": "tests\\step_definitions\\steps.js:52"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 2537129900
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 11,
+            "name": "я выбираю роль \"coordinator\"",
+            "match": {
+              "location": "tests\\step_definitions\\steps.js:106"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 185199
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 12,
+            "name": "я ввожу email \"coordinator@jype.com\"",
+            "match": {
+              "location": "tests\\step_definitions\\steps.js:115"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 127089699
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 13,
+            "name": "я ввожу пароль \"demo123\"",
+            "match": {
+              "location": "tests\\step_definitions\\steps.js:122"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 89495299
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 14,
+            "name": "я нажимаю кнопку \"Войти\"",
+            "match": {
+              "location": "tests\\step_definitions\\steps.js:129"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1143704699
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 15,
+            "name": "я должен быть перенаправлен на дашборд",
+            "match": {
+              "location": "tests\\step_definitions\\steps.js:297"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 6658299
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 16,
+            "name": "должна отображаться роль \"Координатор\"",
+            "match": {
+              "location": "tests\\step_definitions\\steps.js:303"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 32372900
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 45620900
+            }
+          }
+        ],
+        "tags": [
+          {
+            "name": "@positive",
+            "line": 9
+          }
+        ],
+        "type": "scenario"
+      },
+      {
+        "description": "",
+        "id": "авторизация-пользователей;неудачная-авторизация-с-неверным-паролем",
+        "keyword": "Scenario",
+        "line": 25,
+        "name": "Неудачная авторизация с неверным паролем",
+        "steps": [
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 591967399
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 7,
+            "name": "я нахожусь на странице входа",
+            "match": {
+              "location": "tests\\step_definitions\\steps.js:52"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 2574512299
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 26,
+            "name": "я выбираю роль \"manager\"",
+            "match": {
+              "location": "tests\\step_definitions\\steps.js:106"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 542520700
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 27,
+            "name": "я ввожу email \"manager@jype.com\"",
+            "match": {
+              "location": "tests\\step_definitions\\steps.js:115"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 124409800
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 28,
+            "name": "я ввожу пароль \"wrongpassword\"",
+            "match": {
+              "location": "tests\\step_definitions\\steps.js:122"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 95119600
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 29,
+            "name": "я нажимаю кнопку \"Войти\"",
+            "match": {
+              "location": "tests\\step_definitions\\steps.js:129"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1046883100
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 30,
+            "name": "должно отобразиться сообщение об ошибке \"Неверный пароль\"",
+            "match": {
+              "location": "tests\\step_definitions\\steps.js:311"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 25646600
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 57398899
+            }
+          }
+        ],
+        "tags": [
+          {
+            "name": "@negative",
+            "line": 24
+          }
+        ],
+        "type": "scenario"
+      },
+      {
+        "description": "",
+        "id": "авторизация-пользователей;неудачная-авторизация-с-несуществующим-email",
+        "keyword": "Scenario",
+        "line": 33,
+        "name": "Неудачная авторизация с несуществующим email",
+        "steps": [
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 577821799
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 7,
+            "name": "я нахожусь на странице входа",
+            "match": {
+              "location": "tests\\step_definitions\\steps.js:52"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 2598182300
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 34,
+            "name": "я выбираю роль \"manager\"",
+            "match": {
+              "location": "tests\\step_definitions\\steps.js:106"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 543003900
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 35,
+            "name": "я ввожу email \"nonexistent@test.com\"",
+            "match": {
+              "location": "tests\\step_definitions\\steps.js:115"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 123966200
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 36,
+            "name": "я ввожу пароль \"demo123\"",
+            "match": {
+              "location": "tests\\step_definitions\\steps.js:122"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 95397399
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 37,
+            "name": "я нажимаю кнопку \"Войти\"",
+            "match": {
+              "location": "tests\\step_definitions\\steps.js:129"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1060462600
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 38,
+            "name": "должно отобразиться сообщение об ошибке \"Пользователь не найден\"",
+            "match": {
+              "location": "tests\\step_definitions\\steps.js:311"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 27973299
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 40927599
+            }
+          }
+        ],
+        "tags": [
+          {
+            "name": "@negative",
+            "line": 32
+          }
+        ],
+        "type": "scenario"
+      }
+    ],
+    "id": "авторизация-пользователей",
+    "line": 1,
+    "keyword": "Feature",
+    "name": "Авторизация пользователей",
+    "tags": [],
+    "uri": "tests\\features\\login.feature"
+  },
+  {
+    "description": "  Как координатор\n  Я хочу управлять техническими командами на мероприятиях\n  Чтобы обеспечить техническую поддержку концертов",
+    "elements": [
+      {
+        "description": "",
+        "id": "управление-техническими-командами;назначение-технической-команды-на-мероприятие",
+        "keyword": "Scenario",
+        "line": 13,
+        "name": "Назначение технической команды на мероприятие",
+        "steps": [
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 578162500
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 8,
+            "name": "я авторизован как координатор",
+            "result": {
+              "status": "undefined",
+              "duration": 0
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 9,
+            "name": "я нахожусь на странице мероприятий",
+            "match": {
+              "location": "tests\\step_definitions\\steps.js:90"
+            },
+            "result": {
+              "status": "skipped",
+              "duration": 0
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 10,
+            "name": "я открываю мероприятие для просмотра",
+            "result": {
+              "status": "undefined",
+              "duration": 0
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 14,
+            "name": "я выбираю техническую команду \"Sound Masters\"",
+            "result": {
+              "status": "undefined",
+              "duration": 0
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 15,
+            "name": "я добавляю примечание \"Основная звуковая система\"",
+            "result": {
+              "status": "undefined",
+              "duration": 0
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 16,
+            "name": "я нажимаю \"Добавить\"",
+            "match": {
+              "location": "tests\\step_definitions\\steps.js:179"
+            },
+            "result": {
+              "status": "skipped",
+              "duration": 0
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 17,
+            "name": "команда \"Sound Masters\" должна отображаться в списке назначенных",
+            "result": {
+              "status": "undefined",
+              "duration": 0
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 37811999
+            }
+          }
+        ],
+        "tags": [
+          {
+            "name": "@positive",
+            "line": 12
+          }
+        ],
+        "type": "scenario"
+      },
+      {
+        "description": "",
+        "id": "управление-техническими-командами;удаление-технической-команды-с-мероприятия",
+        "keyword": "Scenario",
+        "line": 20,
+        "name": "Удаление технической команды с мероприятия",
+        "steps": [
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 577670500
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 8,
+            "name": "я авторизован как координатор",
+            "result": {
+              "status": "undefined",
+              "duration": 0
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 9,
+            "name": "я нахожусь на странице мероприятий",
+            "match": {
+              "location": "tests\\step_definitions\\steps.js:90"
+            },
+            "result": {
+              "status": "skipped",
+              "duration": 0
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 10,
+            "name": "я открываю мероприятие для просмотра",
+            "result": {
+              "status": "undefined",
+              "duration": 0
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 21,
+            "name": "на мероприятие назначена команда \"Lightwave Team\"",
+            "result": {
+              "status": "undefined",
+              "duration": 0
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 22,
+            "name": "я нажимаю кнопку удаления у команды \"Lightwave Team\"",
+            "result": {
+              "status": "undefined",
+              "duration": 0
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 23,
+            "name": "команда \"Lightwave Team\" должна исчезнуть из списка",
+            "result": {
+              "status": "undefined",
+              "duration": 0
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 54007699
+            }
+          }
+        ],
+        "tags": [
+          {
+            "name": "@positive",
+            "line": 19
+          }
+        ],
+        "type": "scenario"
+      },
+      {
+        "description": "",
+        "id": "управление-техническими-командами;попытка-назначить-уже-назначенную-команду",
+        "keyword": "Scenario",
+        "line": 26,
+        "name": "Попытка назначить уже назначенную команду",
+        "steps": [
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 580312199
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 8,
+            "name": "я авторизован как координатор",
+            "result": {
+              "status": "undefined",
+              "duration": 0
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 9,
+            "name": "я нахожусь на странице мероприятий",
+            "match": {
+              "location": "tests\\step_definitions\\steps.js:90"
+            },
+            "result": {
+              "status": "skipped",
+              "duration": 0
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 10,
+            "name": "я открываю мероприятие для просмотра",
+            "result": {
+              "status": "undefined",
+              "duration": 0
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 27,
+            "name": "на мероприятие назначена команда \"Sound Masters\"",
+            "result": {
+              "status": "undefined",
+              "duration": 0
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 28,
+            "name": "я снова выбираю команду \"Sound Masters\"",
+            "result": {
+              "status": "undefined",
+              "duration": 0
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 29,
+            "name": "я нажимаю \"Добавить\"",
+            "match": {
+              "location": "tests\\step_definitions\\steps.js:179"
+            },
+            "result": {
+              "status": "skipped",
+              "duration": 0
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 30,
+            "name": "должно отобразиться сообщение \"Техническая команда уже назначена\"",
+            "result": {
+              "status": "undefined",
+              "duration": 0
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 51562799
+            }
+          }
+        ],
+        "tags": [
+          {
+            "name": "@negative",
+            "line": 25
+          }
+        ],
+        "type": "scenario"
+      }
+    ],
+    "id": "управление-техническими-командами",
+    "line": 2,
+    "keyword": "Feature",
+    "name": "Управление техническими командами",
+    "tags": [],
+    "uri": "tests\\features\\tech-teams.feature"
+  }
+]

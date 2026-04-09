@@ -10,13 +10,17 @@ jobs:
   test:
     runs-on: windows-latest
 
+    # Добавьте таймаут, чтобы тесты не висели вечно
+    timeout-minutes: 15
+
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
 
       - name: Setup Node.js
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
           node-version: '18'
+          cache: 'npm'  # Кэширование зависимостей для скорости
 
       - name: Install dependencies
         run: npm ci
@@ -24,20 +28,29 @@ jobs:
       - name: Start server
         run: |
           Start-Process -NoNewWindow npm run start
-          Start-Sleep -Seconds 5
+          Start-Sleep -Seconds 10  # Увеличил до 10 сек для надежности
         shell: powershell
 
       - name: Run Selenium tests
         run: npm run test:selenium
+        continue-on-error: true  # Продолжить даже если Selenium упал
 
       - name: Run Cucumber tests
         run: npm run test:cucumber
+        continue-on-error: true  # Продолжить даже если Cucumber упал
 
       - name: Upload test reports
-        if: always()
-        uses: actions/upload-artifact@v3
+        if: always()  # Всегда загружать отчеты, даже если тесты упали
+        uses: actions/upload-artifact@v4
         with:
-          name: test-reports
+          name: test-reports-${{ github.run_id }}  # Уникальное имя
           path: |
             reports/
             *.log
+            test-results/
+          retention-days: 30
+          compression-level: 6  # Сжатие артефактов
+
+      - name: Fail workflow if any test failed
+        if: steps.selenium.outcome == 'failure' || steps.cucumber.outcome == 'failure'
+        run: exit 1

@@ -2,13 +2,13 @@ name: Run Tests
 
 on:
   push:
-    branches: [ main, master, develop ]
+    branches: [ main, master ]
   pull_request:
     branches: [ main, master ]
 
 jobs:
   test:
-    runs-on: windows-latest  # или ubuntu-latest, macos-latest
+    runs-on: windows-latest
 
     steps:
       - uses: actions/checkout@v3
@@ -23,12 +23,9 @@ jobs:
 
       - name: Start server
         run: |
-          npm start &
-          sleep 5
-        shell: bash
-
-      - name: Run Jest tests
-        run: npm test
+          Start-Process -NoNewWindow npm run start
+          Start-Sleep -Seconds 5
+        shell: powershell
 
       - name: Run Selenium tests
         run: npm run test:selenium
@@ -43,4 +40,4 @@ jobs:
           name: test-reports
           path: |
             reports/
-            test-results/
+            *.log

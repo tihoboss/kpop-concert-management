@@ -1,0 +1,37 @@
+# Зависимости
+node_modules/
+package-lock.json
+
+# Логи и отчеты
+logs/
+*.log
+reports/
+test-results/
+
+# Файлы окружения
+.env
+.env.local
+.env.production
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Временные файлы
+*.tmp
+*.temp
+
+# База данных
+*.db
+*.sqlite
+*.sqlite3
+
+# Сборка
+dist/
+build/

@@ -12,6 +12,13 @@
     "test:cucumber:verbose": "cucumber-js tests/features/*.feature --require tests/step_definitions/*.js --format progress",
     "test:all": "npm run test && npm run test:selenium && npm run test:cucumber"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/tihoboss/kpop-concert-management.git"
+  },
+  "keywords": ["kpop", "concert", "management", "testing"],
+  "author": "Tiho Boss",
+  "license": "MIT",
   "dependencies": {
     "bcryptjs": "^2.4.3",
     "cors": "^2.8.5",

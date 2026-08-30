@@ -68,3 +68,84 @@
 5. **Запуск сервера**
    
 `````node backend/server.js`````
+
+
+
+
+
+
+
+
+
+#ENGLISH
+# Performance Schedule Management System
+
+An information system for Entertainment companies, enabling centralized management of musical group performance schedules and resource occupancy control.
+
+## About the Project
+
+The system is developed for an Entertainment company that manages musical groups and organizes their performances in South Korea. The project solves the problem of scattered performance information storage, which led to scheduling errors and conflicts with dates and venues.
+
+### Key Features
+
+- **Group & Artist Management** - Create, edit, and delete musical groups
+- **Event Planning** - Create performance schedules considering resource availability
+- **Venue Management** - Store information about concert venues
+- **Technical Team Control** - Assign technical teams to events
+- **Role-Based Access** - Separate permissions for admins, managers, and coordinators
+- **Report Generation** - Summary reports on schedules, group workload, and technical team operations
+
+## Architecture
+
+### Technology Stack
+
+| Component | Technology |
+|-----------|------------|
+| **Backend** | Node.js + Express |
+| **Database** | PostgreSQL |
+| **Frontend** | HTML, CSS, JavaScript |
+| **Authentication** | JWT (JSON Web Tokens) |
+| **API** | RESTful API |
+
+## User Roles
+
+### Administrator
+- Full access to all system functions
+- Manage groups and events
+- Create new groups and assign managers
+- View all reports
+
+### Group Manager
+- Manage their group's schedule
+- View and edit events
+- View venue information
+
+### Coordinator
+- Manage technical teams
+- Assign teams to events
+- View assigned events
+
+## 🚀 Installation & Setup
+
+### Requirements
+
+- Node.js (v14+)
+- PostgreSQL (v12+)
+- Git
+
+### Setup Steps
+
+### Шаги установки
+1. **Клонирование репозитория**
+   
+`````git clone [repository-url]`````
+
+`````cd concert-management-system`````
+
+3. ** Install dependencies**
+   
+`````npm install`````
+
+5. **Start the server**
+   
+`````node backend/server.js`````
